@@ -11,10 +11,10 @@ class Follower
     def initialize
         # enregistrement des clés d'APIs
         @client = Twitter::REST::Client.new do |config|
-          config.consumer_key        = ENV["TWITTER_API_KEY"]
-          config.consumer_secret     = ENV["TWITTER_API_SECRET"]
-          config.access_token        = ENV["TWITTER_USER_TOKEN"]
-          config.access_token_secret = ENV["TWITTER_USER_TOKEN_SECRET"]
+            config.consumer_key        = ENV["twitter_api_key"]
+            config.consumer_secret     = ENV["twitter_api_secret"]
+            config.access_token        = ENV["twitter_user_token"]
+            config.access_token_secret = ENV["twitter_user_token_secret"]
         end
     end
 
