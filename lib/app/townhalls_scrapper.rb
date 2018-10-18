@@ -27,7 +27,8 @@ class ScrapperTownhalls
       n+=1
     end
   end
-  def array_to_csv 
+  
+  def array_to_csv
     CSV.open("../../db/townhalls.csv", "a+") do |csv|
      # csv << @array.first.keys
       @array.each do |item|
