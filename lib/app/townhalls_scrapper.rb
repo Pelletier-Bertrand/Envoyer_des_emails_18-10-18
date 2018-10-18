@@ -10,14 +10,14 @@ class ScrapperTownhalls
   def initialize(departement)
     @dep = "http://annuaire-des-mairies.com/#{departement}.html"
   end
-
+   #on recupère l'url des mairies
   def get_all_the_urls_townhalls
       page = Nokogiri::HTML(open(@dep))
       @@url = page.xpath('//p/a').map {|link| link["href"]}.map{|content| content = "http://annuaire-des-mairies.com#{content[1..-1]}"}
-      @nom = page.xpath('//p/a').map {|link| link.text}
+      @nom = page.xpath('//p/a').map {|link| link.text} #on recupère le nom de la mairie à l'aide d'un selecteur Xpath
       @departement = page.xpath('//font/b/a').text.split.last
   end
-
+#on recupère l'emails des mairies
   def get_the_email_of_a_townhal_from_its_webpage
     @array = []
     n = 0
@@ -27,7 +27,7 @@ class ScrapperTownhalls
       n+=1
     end
   end
-  
+  #on enrengistes les données des mairies
   def array_to_csv
     CSV.open("../../db/townhalls.csv", "a+") do |csv|
      # csv << @array.first.keys
@@ -37,7 +37,7 @@ class ScrapperTownhalls
       end
   end
 end
-
+#on appelle toutes les méthodes
 def perform
   print "Scrapping en cours ..."
   hauts_de_seine = ScrapperTownhalls.new("hauts-de-seine")
