@@ -1,0 +1,8 @@
+source "https://rubygems.org"
+ruby '2.5.1'
+gem 'pry'
+gem 'colorize'
+gem 'json'
+gem 'google_drive'
+gem 'dotenv'
+gem 'google-api-client'
