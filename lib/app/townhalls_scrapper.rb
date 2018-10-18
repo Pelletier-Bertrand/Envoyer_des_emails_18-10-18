@@ -29,7 +29,7 @@ class ScrapperTownhalls
   end
   #on enrengistes les données des mairies
   def array_to_csv
-    CSV.open("../../db/townhalls.csv", "a+") do |csv|
+    CSV.open("./db/townhalls.csv", "a+") do |csv|
      # csv << @array.first.keys
       @array.each do |item|
         csv << item.values

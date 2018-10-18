@@ -1,15 +1,16 @@
 class View
 
  def first_action 
+   puts " "
    puts"-"*50
    puts "       Bienvenue sur notre application"
    puts"-"*50
    puts " "
    puts "Voulez-vous exécuter le script pour récupérer les adresses mails ? [Y/N]"
-   user_input = gets.chomp
+   user_input = gets.chomp.upcase
    if user_input == "Y"
-     require '../app/townhalls_scrapper' #exécute le script scrapper (situé dans un dossier externe) si l'utilisateur choisis Y[]]
-     second_action
+     require './lib/app/townhalls_scrapper' #exécute le script scrapper (situé dans un dossier externe) si l'utilisateur choisis Y[]]
+    second_action
    else
      puts "Fermeture de l'application"
    end
@@ -17,7 +18,7 @@ class View
  def second_action
    puts " "
    puts "Voulez-vous envoyer un email aux différentes mairies ? [Y/N]"
-   user_input = gets.chomp
+   user_input = gets.chomp.upcase
    if user_input == "Y"
      puts "Contenu du mail:"
      puts " "
@@ -30,7 +31,7 @@ class View
      Charles, co-fondateur de The Hacking Project pourra répondre à toutes vos questions : 06.95.46.60.80"
      puts " "
      puts "Voulez-vous continuer ? [Y/N]"
-     user_input = gets.chomp
+     user_input = gets.chomp.upcase
      if user_input == "Y"
        require '../app/townhalls_mailer'
        third_action
@@ -44,7 +45,7 @@ class View
  def third_action
    puts " "
    puts "Voulez-vous rechercher les adresses twitter des mairies ? [Y/N]"
-   user_input = gets.chomp
+   user_input = gets.chomp.upcase
    if user_input == "Y"
      require '../app/townhalls_adder_to_db'
      fourth_action
@@ -56,6 +57,7 @@ class View
  def fourth_action
    puts " "
    puts "Voulez-vous follow les mairies ? [Y/N]"
+   user_input = gets.chomp.upcase
    if user_input == "Y"
      require '../app/townhalls_follower'
    else
